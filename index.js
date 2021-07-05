@@ -1,18 +1,19 @@
 
-let str = "";
-let op = "";
-let step = 0;
+let str1 = "";
+let str2 = "";
+let operation = "";
+let operationCount = 0;
 let previus = "";
 let current = "";
 const calc = (num) =>{
-    if(step === 0){
+    if(operationCount === 0){
         if(num === "."){
             if(previus.includes(".")) return;
             if(previus === ""){previus = "0"};
         }
         previus = previus + num;
-        str = previus;
-        display(str); 
+        str1 = previus;
+        display(str1); 
         
     }else{
         if(num === "."){
@@ -20,46 +21,53 @@ const calc = (num) =>{
             if(current === ""){ current = "0"; }
         }
         current = current + num;
-        str = current;
-        display(str);
+        str2 = current;
+        display(str1,str2);
     }
 }
 const clearCalc = ()=>{
-document.getElementById("disp").innerText = "";
-op = "";
-step = 0;
-str = "";
-previus = "";
-current = "";
+    document.getElementById("disp").innerText = "";
+    operation = "";
+    operationCount = 0;
+    str1 = "";
+    str2 = "";
+    previus = "";
+    current = "";
 }
 const equally = ()=>{  
 
-    if(op === "-"){
+    if(operation === "-"){
         previus = Number(previus) - Number(current);
     }
-    if(op === "+"){
+    if(operation === "+"){
         previus = Number(previus) + Number(current);
     }
-    if(op === "*"){
+    if(operation === "×"){
         previus = Number(previus) * Number(current);
     }
-    if(op === "/"){
+    if(operation === "/"){
         previus = Number(previus) / Number(current);
     }
-    str = previus;
-    display(previus);
+    str1 = previus.toString();
+    operation = undefined;
     current = "";
+    operationCount = 0;
+    display(previus);
 }
-const operation = (operation)=>{
-    if(step !== 0){
-
-    }
-    op = operation;
-    step ++;
-    str = str + op;
-    display(str);
+const mathSimbols = (op)=>{
+    if(operationCount !== 0)  return;
+    operation = op;
+    operationCount ++;
+    display(str1);
     
 }
-const display = (str)=>{
-    document.getElementById("disp").innerText = str;
+const display = (str1, str2)=>{
+    str2? document.getElementById("disp").innerText = str1+operation+str2:
+    document.getElementById("disp").innerText = operation? str1+operation: str1; 
+}
+const mouseDown = ()=>{
+    document.getElementById("displayId").classList.add("displayBorder");
+}
+const mouseUp = ()=>{
+    document.getElementById("displayId").classList.remove("displayBorder");
 }

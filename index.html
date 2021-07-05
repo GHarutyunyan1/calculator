@@ -17,72 +17,72 @@
         <table  class="tableCalc" style="width:100%">
             <tr>
               <th>
-                  <div class="tab" onclick="calc('(')">(</div>
+                  <div class="operatorTab tab" onmousedown="mouseDown()" onmouseup="mouseUp()" onclick="calc('(')">(</div>
               </th>
               <th>
-                <div class="tab" onclick="calc(')')">)</div>
+                <div class="operatorTab tab" onmousedown="mouseDown()" onmouseup="mouseUp()" onclick="calc(')')">)</div>
               </th>
               <th>
-                <div class="tab" onclick="calc('%')">%</div>
+                <div class="operatorTab tab" onmousedown="mouseDown()" onmouseup="mouseUp()" onclick="calc('%')">%</div>
               </th>
               <th>
-                <div class="tab" onclick="clearCalc()">AC</div>
+                <div class="operatorTab tab" onmousedown="mouseDown()" onmouseup="mouseUp()" onclick="clearCalc()">AC</div>
               </th>
             </tr>
             <tr>
                 <th>
-                    <div class="tab" onclick="calc(7)">7</div>
+                    <div class="tab" onmousedown="mouseDown()" onmouseup="mouseUp()" onclick="calc(7)">7</div>
                 </th>
                 <th>
-                  <div class="tab" onclick="calc(8)">8</div>
+                  <div class="tab" onmousedown="mouseDown()" onmouseup="mouseUp()" onclick="calc(8)">8</div>
                 </th>
                 <th>
-                  <div class="tab" onclick="calc(9)">9</div>
+                  <div class="tab" onmousedown="mouseDown()" onmouseup="mouseUp()" onclick="calc(9)">9</div>
                 </th>
                 <th>
-                  <div class="tab" onclick="operation('/')">/</div>
-                </th>
-            </tr>
-            <tr>
-                <th>
-                    <div class="tab" onclick="calc(4)">4</div>
-                </th>
-                <th>
-                  <div class="tab" onclick="calc(5)">5</div>
-                </th>
-                <th>
-                  <div class="tab" onclick="calc(6)">6</div>
-                </th>
-                <th>
-                  <div class="tab" onclick="operation('*')">x</div>
+                  <div class="operatorTab tab" onmousedown="mouseDown()" onmouseup="mouseUp()" onclick="mathSimbols('/')">÷</div>
                 </th>
             </tr>
             <tr>
                 <th>
-                    <div class="tab" onclick="calc(1)">1</div>
+                    <div class="tab" onmousedown="mouseDown()" onmouseup="mouseUp()" onclick="calc(4)">4</div>
                 </th>
                 <th>
-                  <div class="tab" onclick="calc(2)">2</div>
+                  <div class="tab" onmousedown="mouseDown()" onmouseup="mouseUp()" onclick="calc(5)">5</div>
                 </th>
                 <th>
-                  <div class="tab" onclick="calc(3)">3</div>
+                  <div class="tab" onmousedown="mouseDown()" onmouseup="mouseUp()" onclick="calc(6)">6</div>
                 </th>
                 <th>
-                  <div class="tab" onclick="operation('-')">-</div>
+                  <div class="operatorTab tab" onmousedown="mouseDown()" onmouseup="mouseUp()" onclick="mathSimbols('×')">x</div>
                 </th>
             </tr>
             <tr>
                 <th>
-                    <div class="tab" onclick="calc(0)">0</div>
+                    <div class="tab" onmousedown="mouseDown()" onmouseup="mouseUp()" onclick="calc(1)">1</div>
                 </th>
                 <th>
-                  <div class="tab" onclick="calc('.')">.</div>
+                  <div class="tab" onmousedown="mouseDown()" onmouseup="mouseUp()" onclick="calc(2)">2</div>
                 </th>
                 <th>
-                  <div class="tab" onclick="equally()">=</div>
+                  <div class="tab" onmousedown="mouseDown()" onmouseup="mouseUp()" onclick="calc(3)">3</div>
                 </th>
                 <th>
-                  <div class="tab" onclick="operation('+')">+</div>
+                  <div class="operatorTab tab" onmousedown="mouseDown()" onmouseup="mouseUp()" onclick="mathSimbols('-')">-</div>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <div class="tab" onmousedown="mouseDown()" onmouseup="mouseUp()" onclick="calc(0)">0</div>
+                </th>
+                <th>
+                  <div class="tab" onmousedown="mouseDown()" onmouseup="mouseUp()" onclick="calc('.')">.</div>
+                </th>
+                <th>
+                  <div class="equallyDiv tab" onmousedown="mouseDown()" onmouseup="mouseUp()" onclick="equally()">=</div>
+                </th>
+                <th>
+                  <div class="operatorTab tab" onmousedown="mouseDown()" onmouseup="mouseUp()" onclick="mathSimbols('+')">+</div>
                 </th>
             </tr>
           </table>
