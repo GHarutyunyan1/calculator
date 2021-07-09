@@ -1,73 +1,85 @@
 
-let str1 = "";
-let str2 = "";
-let operation = "";
-let operationCount = 0;
-let previus = "";
-let current = "";
+let str = "";
+let arr = [];
 const calc = (num) =>{
-    if(operationCount === 0){
-        if(num === "."){
-            if(previus.includes(".")) return;
-            if(previus === ""){previus = "0"};
-        }
-        previus = previus + num;
-        str1 = previus;
-        display(str1); 
-        
-    }else{
-        if(num === "."){
-            if(current.includes(".")) return;
-            if(current === ""){ current = "0"; }
-        }
-        current = current + num;
-        str2 = current;
-        display(str1,str2);
+    if(num === "."){
+        if(str.includes(".")) return;
+        if(str === ""){str = "0"};
     }
+    str = str + num;
+    display([str]);   
 }
+
 const clearCalc = ()=>{
     document.getElementById("disp").innerText = "";
-    operation = "";
-    operationCount = 0;
-    str1 = "";
-    str2 = "";
-    previus = "";
-    current = "";
+    str = "";
+    arr= [];
 }
 const equally = ()=>{  
-
-    if(operation === "-"){
-        previus = Number(previus) - Number(current);
+    console.log(str)
+    arr.push(str);
+    arr = recEqually(arr);
+    if(arr.length > 1){
+        for(let i = 0; i< arr.length; i++){
+            if(arr[i] === "+" || arr[i] === "-"){
+                let value =  equa(arr[i-1],arr[i+1], arr[i]);
+                arr.splice(i-1,3, value);
+                --i;
+            }
+        }
     }
-    if(operation === "+"){
-        previus = Number(previus) + Number(current);
-    }
-    if(operation === "×"){
-        previus = Number(previus) * Number(current);
-    }
-    if(operation === "/"){
-        previus = Number(previus) / Number(current);
-    }
-    str1 = previus.toString();
-    operation = undefined;
-    current = "";
-    operationCount = 0;
-    display(previus);
+    display(arr);
 }
-const mathSimbols = (op)=>{
-    if(operationCount !== 0)  return;
-    operation = op;
-    operationCount ++;
-    display(str1);
+const mathSimbols = (operation)=>{
+    arr.push(str);
+    arr.push(operation);
+    str= "";
+    display(arr);
     
 }
-const display = (str1, str2)=>{
-    str2? document.getElementById("disp").innerText = str1+operation+str2:
-    document.getElementById("disp").innerText = operation? str1+operation: str1; 
+const display = (arr)=>{
+    document.getElementById("disp").innerText = arr.join(" "); 
 }
 const mouseDown = ()=>{
     document.getElementById("displayId").classList.add("displayBorder");
 }
 const mouseUp = ()=>{
     document.getElementById("displayId").classList.remove("displayBorder");
+}
+
+
+const recEqually = (arr)=>{
+    console.log(arr);
+    if(arr.includes("×") || arr.includes("/")){
+        let index, value;
+        if(arr.indexOf("×") !== -1){
+            index = arr.indexOf("×");
+            value =  equa(arr[index-1],arr[index+1], arr[index]);
+            arr.splice(index-1,3, value);
+        }
+        if(arr.indexOf("/") !== -1){
+            index = arr.indexOf("/");
+            value =  equa(arr[index-1],arr[index+1], arr[index]);
+            arr.splice(index-1,3, value);
+        }
+    } 
+    if(arr.includes("×") || arr.includes("/")){
+        recEqually(arr);
+    }
+    return arr; 
+}
+
+const equa = (value1, value2, operation)=>{
+    if(operation === "-"){
+        return Number(value1) - Number(value2);
+    }
+    if(operation === "+"){
+        return Number(value1) + Number(value2);
+    }
+    if(operation === "×"){
+        return Number(value1) * Number(value2);
+    }
+    if(operation === "/"){
+        return Number(value1) / Number(value2);
+    }
 }
